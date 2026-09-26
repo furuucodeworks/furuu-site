@@ -11,7 +11,7 @@
 .logo{width:128px;flex-shrink:0;display:block;line-height:0}.logo img{display:block;width:100%;height:auto;object-fit:contain}footer .logo{width:155px}footer .logo img{filter:invert(1)}
 @media(max-width:760px){.header .logo{width:100px}footer .logo{width:125px}}
 
-.header .logo img{filter:url(#header-logo-brown)}
+
 
 /* Soft photo corners; the second product has an arched crown. */
 .hero-photo img,.about figure img,.journal-grid>img{border-radius:20px}
@@ -25,3 +25,7 @@
 @font-face{font-family:'Zen Maru Gothic';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/zen-maru-500.ttf') format('truetype')}
 @font-face{font-family:'Zen Maru Gothic';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/zen-maru-700.ttf') format('truetype')}
 body,h1,h2,h3,button,input,textarea,select{font-family:'Zen Maru Gothic','Hiragino Maru Gothic ProN','Yu Gothic',sans-serif}
+
+.header .brand-name{font-family:'Zen Maru Gothic',sans-serif;font-size:25px;font-weight:700;letter-spacing:.09em;line-height:1.3;color:#79563e;white-space:nowrap;flex-shrink:0}
+@media(max-width:760px){.header .brand-name{font-size:18px;letter-spacing:.045em}}
+@media(max-width:380px){.header{gap:12px}.header .brand-name{font-size:16px}}
