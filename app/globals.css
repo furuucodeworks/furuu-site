@@ -10,3 +10,5 @@
 /* Supplied brand logo: preserve proportions; white treatment on brown footer. */
 .logo{width:128px;flex-shrink:0;display:block;line-height:0}.logo img{display:block;width:100%;height:auto;object-fit:contain}footer .logo{width:155px}footer .logo img{filter:invert(1)}
 @media(max-width:760px){.header .logo{width:100px}footer .logo{width:125px}}
+
+.header .logo img{filter:url(#header-logo-brown)}
