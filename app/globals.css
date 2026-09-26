@@ -12,3 +12,12 @@
 @media(max-width:760px){.header .logo{width:100px}footer .logo{width:125px}}
 
 .header .logo img{filter:url(#header-logo-brown)}
+
+/* Soft photo corners; the second product has an arched crown. */
+.hero-photo img,.about figure img,.journal-grid>img{border-radius:20px}
+.product-image{border-radius:20px;overflow:hidden}
+.product-image-arch{border-radius:50% 50% 20px 20px / 62% 62% 20px 20px}
+@media(max-width:760px){
+.hero-photo img,.about figure img,.journal-grid>img,.product-image{border-radius:14px}
+.product-image-arch{border-radius:50% 50% 14px 14px / 36% 36% 14px 14px}
+}
