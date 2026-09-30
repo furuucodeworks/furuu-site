@@ -123,8 +123,8 @@ export default function Home() {
   return (
     <>
       <header className="header">
-        <a href="/" className="brand-logo" aria-label="FURUU COFFEE トップへ">
-          <span className="brand-logo-mark" aria-hidden="true" />
+        <a href="/" className="brand-name" aria-label="FURUU COFFEE トップへ">
+          FURUU COFFEE
         </a>
         <nav aria-label="メインナビゲーション">
           {nav.map(([label, id]) => (
@@ -193,6 +193,9 @@ export default function Home() {
               <br />
               いつもの日々に、自分に戻る時間を。
             </p>
+            <div className="hero-brand" role="img" aria-label="FURUU COFFEE ロゴ">
+              <span className="brand-logo-mark" aria-hidden="true" />
+            </div>
           </div>
           <figure className="hero-photo">
             <img src={photos.hero} alt="自然光の中に置かれた一杯のコーヒー" />

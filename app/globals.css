@@ -94,7 +94,7 @@ button {
 .hero {
   height: 650px;
   max-height: calc(100svh - 126px);
-  min-height: 510px;
+  min-height: 600px;
   position: relative;
   margin: 0 5%;
   padding: 32px 0 70px;
@@ -119,7 +119,7 @@ button {
 .hero-copy {
   position: absolute;
   z-index: 1;
-  top: 28%;
+  top: 18%;
   left: 3%;
   width: 41%;
 }
@@ -690,14 +690,35 @@ select {
     "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
 }
 
-/* Keep the supplied transparent logo intact and tint it with the brand brown. */
-.header {
-  padding-inline: 8%;
-}
-.header .brand-logo {
-  display: block;
-  width: 140px;
+.header .brand-name {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.3;
+  color: #79563e;
+  white-space: nowrap;
   flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  .header .brand-name {
+    font-size: 18px;
+    letter-spacing: 0.045em;
+  }
+}
+@media (max-width: 380px) {
+  .header {
+    gap: 12px;
+  }
+  .header .brand-name {
+    font-size: 16px;
+  }
+}
+
+/* The logo signs off the hero copy without competing with its headline. */
+.hero-brand {
+  width: 144px;
+  margin-top: 24px;
 }
 .brand-logo-mark {
   display: block;
@@ -708,16 +729,9 @@ select {
   mask: url("/furuu-logo.png") center / contain no-repeat;
 }
 @media (max-width: 760px) {
-  .header .brand-logo {
-    width: 100px;
-  }
-}
-@media (max-width: 380px) {
-  .header {
-    gap: 12px;
-  }
-  .header .brand-logo {
-    width: 90px;
+  .hero-brand {
+    width: 112px;
+    margin-top: 20px;
   }
 }
 
