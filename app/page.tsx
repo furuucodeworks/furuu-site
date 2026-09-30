@@ -123,8 +123,8 @@ export default function Home() {
   return (
     <>
       <header className="header">
-        <a href="#" className="brand-name" aria-label="FURUU COFFEE トップへ">
-          FURUU COFFEE
+        <a href="/" className="brand-logo" aria-label="FURUU COFFEE トップへ">
+          <span className="brand-logo-mark" aria-hidden="true" />
         </a>
         <nav aria-label="メインナビゲーション">
           {nav.map(([label, id]) => (
