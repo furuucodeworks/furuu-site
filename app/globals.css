@@ -102,8 +102,9 @@ button {
 .hero-photo {
   position: absolute;
   left: 34%;
+  right: 20px;
   top: 24px;
-  width: 51%;
+  width: auto;
   height: calc(100% - 96px);
 }
 .hero-photo img {
@@ -182,29 +183,19 @@ h1 {
   font-size: 12px;
   letter-spacing: 0.13em;
 }
-.hero-bottom span {
-  display: flex;
-  gap: 13px;
-  align-items: center;
-}
-.hero-bottom i {
-  width: 38px;
-  height: 1px;
-  background: #79563e;
-}
 .section {
   padding: 100px 10%;
 }
 .section-label {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.13em;
   color: #79563e;
   margin-bottom: 60px;
 }
 .section-label span:last-child {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
 }
 .about {
@@ -346,11 +337,31 @@ h3 small {
   margin-top: 50px;
   padding-top: 25px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.categories-label {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  color: #79563e;
+  font-weight: 600;
+}
+.category-list {
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 15px;
-  font-size: 9px;
+  gap: 12px 15px;
+  width: 100%;
+  font-size: 11px;
   color: #85756a;
+}
+.category-list span {
+  transition: color 0.2s ease;
+}
+.category-list span:hover {
+  color: #79563e;
 }
 .news {
   padding-top: 72px;
@@ -389,24 +400,6 @@ footer p {
   font-size: 10px;
   letter-spacing: 0.08em;
   margin-top: 24px;
-}
-.footer-right {
-  text-align: right;
-}
-.footer-right p {
-  margin-top: 0;
-}
-.contact-button {
-  color: white !important;
-  font-size: 22px !important;
-  letter-spacing: 0.15em;
-  margin: 18px 0 25px;
-  padding: 0 !important;
-}
-.footer-right small {
-  display: block;
-  font-size: 8px;
-  letter-spacing: 0.12em;
 }
 .notice-backdrop {
   position: fixed;
@@ -483,8 +476,9 @@ footer p {
   }
   .hero-photo {
     left: 14%;
+    right: 20px;
     top: 35px;
-    width: 86%;
+    width: auto;
     height: 430px;
   }
   .hero-copy {
@@ -509,9 +503,11 @@ footer p {
     margin-top: 18px;
   }
   .circle-store {
-    bottom: 54px;
-    width: 105px !important;
-    height: 105px !important;
+    top: auto;
+    right: 0;
+    bottom: 73px;
+    width: 115px !important;
+    height: 115px !important;
     font-size: 11px !important;
     gap: 6px !important;
   }
@@ -534,10 +530,10 @@ footer p {
   }
   .section-label {
     margin-bottom: 38px;
-    font-size: 8px;
+    font-size: 10px;
   }
   .section-label span:last-child {
-    font-size: 8px;
+    font-size: 10px;
   }
   .about-grid {
     grid-template-columns: 1fr;
@@ -594,10 +590,13 @@ footer p {
   .journal-grid h2 {
     font-size: 22px;
   }
-  .categories {
+  .categories-label {
+    font-size: 10px;
+  }
+  .category-list {
     justify-content: flex-start;
-    gap: 18px;
-    font-size: 8px;
+    gap: 10px 18px;
+    font-size: 10px;
   }
   .news {
     padding-top: 56px;
@@ -621,9 +620,6 @@ footer p {
   footer p {
     font-size: 8px;
   }
-  .contact-button {
-    font-size: 17px !important;
-  }
   .notice {
     padding: 30px;
   }
@@ -634,6 +630,9 @@ footer p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .category-list span {
+    transition: none;
   }
 }
 
@@ -715,11 +714,6 @@ select {
   }
 }
 
-/* The logo signs off the hero copy without competing with its headline. */
-.hero-brand {
-  width: 144px;
-  margin-top: 24px;
-}
 .brand-logo-mark {
   display: block;
   width: 100%;
@@ -728,13 +722,6 @@ select {
   -webkit-mask: url("/furuu-logo.png") center / contain no-repeat;
   mask: url("/furuu-logo.png") center / contain no-repeat;
 }
-@media (max-width: 760px) {
-  .hero-brand {
-    width: 112px;
-    margin-top: 20px;
-  }
-}
-
 /* WEB DESIGN shares the nav type. The menu takes over before the bar collides. */
 body {
   --header-h: 126px;
@@ -795,8 +782,12 @@ footer {
   column-gap: 36px;
   row-gap: 28px;
 }
-.footer-right {
+.footer-brand {
+  width: 144px;
   justify-self: end;
+}
+.footer-brand .brand-logo-mark {
+  background-color: #fff;
 }
 .footer-links {
   justify-self: start;
@@ -842,8 +833,7 @@ footer {
 .footer-works .works-name {
   display: inline;
 }
-footer .footer-entry:focus-visible,
-footer .contact-button:focus-visible {
+footer .footer-entry:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 6px;
   box-shadow: none;
@@ -867,7 +857,7 @@ footer .contact-button:focus-visible {
     position: absolute;
     inset: -10px;
   }
-  .footer-right {
+  .footer-brand {
     justify-self: end;
   }
 }

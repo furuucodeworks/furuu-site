@@ -193,9 +193,6 @@ export default function Home() {
               <br />
               いつもの日々に、自分に戻る時間を。
             </p>
-            <div className="hero-brand" role="img" aria-label="FURUU COFFEE ロゴ">
-              <span className="brand-logo-mark" aria-hidden="true" />
-            </div>
           </div>
           <figure className="hero-photo">
             <img src={photos.hero} alt="自然光の中に置かれた一杯のコーヒー" />
@@ -336,9 +333,15 @@ export default function Home() {
             </div>
           </div>
           <div className="categories">
-            コーヒー <span>商品づくり</span> Web・EC{" "}
-            <span>マーケティング・発信</span> 実験と改善{" "}
-            <span>FURUU COFFEEの日々</span>
+            <p className="categories-label">CATEGORY</p>
+            <div className="category-list">
+              <span>コーヒー</span>
+              <span>商品づくり</span>
+              <span>Web・EC</span>
+              <span>マーケティング・発信</span>
+              <span>実験と改善</span>
+              <span>FURUU COFFEEの日々</span>
+            </div>
           </div>
         </section>
         <section className="news section">
@@ -347,9 +350,7 @@ export default function Home() {
               <span>04 / NEWS</span>
               <span>お知らせ</span>
             </div>
-            <p>
-              新商品や出店、営業・発送に関するお知らせを、こちらからお届けします。
-            </p>
+            <p>新商品や営業・発送に関するお知らせをこちらからお届けします。</p>
           </div>
         </section>
         <footer id="contact">
@@ -372,16 +373,12 @@ export default function Home() {
               <span className="works-name">FURUU CODE WORKS</span>
             </DestinationEntry>
           </div>
-          <div className="footer-right">
-            <p>商品・卸販売・出店などのご相談</p>
-            <Button
-              variant="ghost"
-              className="contact-button"
-              onClick={(event) => openPreview(event.currentTarget)}
-            >
-              CONTACT <ArrowUpRight />
-            </Button>
-            <small>© FURUU COFFEE</small>
+          <div
+            className="footer-brand"
+            role="img"
+            aria-label="FURUU COFFEE ロゴ"
+          >
+            <span className="brand-logo-mark" aria-hidden="true" />
           </div>
         </footer>
       </main>
