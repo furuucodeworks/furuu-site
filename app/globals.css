@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -31,7 +31,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
 }
@@ -132,10 +132,10 @@ button {
 }
 h1,
 h2 {
-  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif;
   font-weight: 400;
 }
-h1 {
+.hero h1 {
   font-size: clamp(25px, 2.65vw, 43px);
   line-height: 1.9;
   letter-spacing: 0.13em;
@@ -297,6 +297,12 @@ h3 small {
   border: 1px solid #d8cbbf !important;
   background: transparent !important;
   color: #79563e !important;
+}
+a.round-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 .blog {
   background: #f7f5f2;
@@ -492,7 +498,7 @@ footer p {
     padding: 10px 12px 10px 0;
     font-size: 7px;
   }
-  h1 {
+  .hero h1 {
     font-size: 28px;
     line-height: 1.9;
     margin-top: 0;
@@ -639,7 +645,9 @@ footer p {
 /* Soft photo corners; the second product has an arched crown. */
 .hero-photo img,
 .about figure img,
-.journal-grid > img {
+.journal-grid > img,
+.page-about figure img,
+.page-coffee figure img {
   border-radius: 20px;
 }
 .product-image {
@@ -650,6 +658,8 @@ footer p {
   .hero-photo img,
   .about figure img,
   .journal-grid > img,
+  .page-about figure img,
+  .page-coffee figure img,
   .product-image {
     border-radius: 14px;
   }
@@ -657,25 +667,25 @@ footer p {
 
 /* Rounded typography across headings, copy and controls. */
 @font-face {
-  font-family: "Zen Maru Gothic";
+  font-family: 'Zen Maru Gothic';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/zen-maru-400.ttf") format("truetype");
+  src: url('/fonts/zen-maru-400.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Zen Maru Gothic";
+  font-family: 'Zen Maru Gothic';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("/fonts/zen-maru-500.ttf") format("truetype");
+  src: url('/fonts/zen-maru-500.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Zen Maru Gothic";
+  font-family: 'Zen Maru Gothic';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/fonts/zen-maru-700.ttf") format("truetype");
+  src: url('/fonts/zen-maru-700.ttf') format('truetype');
 }
 body,
 h1,
@@ -686,11 +696,11 @@ input,
 textarea,
 select {
   font-family:
-    "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+    'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif;
 }
 
 .header .brand-name {
-  font-family: "Zen Maru Gothic", sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 25px;
   font-weight: 700;
   letter-spacing: 0.09em;
@@ -719,8 +729,8 @@ select {
   width: 100%;
   aspect-ratio: 2280 / 1581;
   background-color: #79563e;
-  -webkit-mask: url("/furuu-logo.png") center / contain no-repeat;
-  mask: url("/furuu-logo.png") center / contain no-repeat;
+  -webkit-mask: url('/furuu-logo.png') center / contain no-repeat;
+  mask: url('/furuu-logo.png') center / contain no-repeat;
 }
 /* WEB DESIGN shares the nav type. The menu takes over before the bar collides. */
 body {
@@ -853,7 +863,7 @@ footer .footer-entry:focus-visible {
     border-radius: 0 !important;
   }
   .mobile-menu::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: -10px;
   }
@@ -894,4 +904,511 @@ dialog.notice::backdrop {
 }
 dialog.notice:focus {
   outline: none;
+}
+
+.header nav a[aria-current='page'],
+.mobile-nav a[aria-current='page'] {
+  color: #79563e;
+}
+
+/* ABOUT page. Shares TOP type, color, spacing, and photo radius. */
+.about-hero {
+  padding: 56px 10% 72px;
+}
+.about-hero h1 {
+  margin-top: 22px;
+  max-width: 100%;
+  width: auto;
+  padding: 0;
+  background: transparent;
+  font-size: 30px;
+  line-height: 1.75;
+  letter-spacing: 0.08em;
+}
+.about-profile {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 36em);
+  gap: 28px 48px;
+  align-items: center;
+  margin-top: 40px;
+}
+.about-portrait {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 46%;
+  filter: none;
+}
+.about-profile h2 {
+  font-size: 22px;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+}
+.about-story,
+.about-next {
+  background: #f7f5f2;
+}
+.page-about .section-label {
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.about-story h2 {
+  letter-spacing: 0.08em;
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px 10%;
+  align-items: start;
+  margin-top: 36px;
+}
+.story-grid > * {
+  min-width: 0;
+}
+.page-about {
+  word-break: auto-phrase;
+}
+.about-copy {
+  max-width: 40em;
+}
+.about-copy p,
+.about-values p,
+.about-next > p {
+  font-size: 12px;
+  line-height: 2.5;
+  letter-spacing: 0.06em;
+}
+.about-copy p + p {
+  margin-top: 24px;
+}
+.story-grid figure {
+  height: 420px;
+}
+.page-about figure img {
+  filter: saturate(0.68);
+}
+.page-about figcaption {
+  margin-top: 15px;
+  font-size: 8px;
+  letter-spacing: 0.17em;
+  color: #7c7269;
+}
+.value-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px 48px;
+  margin-top: 48px;
+}
+.value-list article {
+  min-width: 0;
+  max-width: 36em;
+  padding-top: 18px;
+  border-top: 1px solid #e5ded7;
+}
+.value-index {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: #79563e;
+  font-weight: 500;
+}
+.value-list h3 {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+.value-list p {
+  margin-top: 14px;
+}
+.about-next > p {
+  max-width: 36em;
+  margin-top: 28px;
+}
+.about-next-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  margin-top: 36px;
+}
+.about-next-links .text-link {
+  margin-top: 0;
+}
+@media (max-width: 999px) {
+  .value-list {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .about-hero {
+    padding: 36px 7% 48px;
+  }
+  .about-hero h1 {
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    max-width: 100%;
+  }
+  .about-profile {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 22px;
+    margin-top: 28px;
+  }
+  .about-portrait {
+    width: 168px;
+    height: 168px;
+  }
+  .about-profile h2 {
+    font-size: 20px;
+  }
+  .about-copy p,
+  .about-values p,
+  .about-next > p {
+    font-size: 12px;
+    line-height: 2.2;
+  }
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 28px;
+  }
+  .story-grid figure {
+    height: 280px;
+  }
+  .value-list {
+    gap: 28px;
+    margin-top: 32px;
+  }
+  .value-list h3 {
+    font-size: 15px;
+  }
+  .about-story h2 {
+    font-size: 22px;
+    letter-spacing: 0.04em;
+  }
+}
+@media (max-width: 380px) {
+  .about-hero h1 {
+    font-size: 22px;
+    letter-spacing: 0.03em;
+  }
+  .about-story h2 {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* COFFEE page. Shares ABOUT type, color, spacing, and photo radius. */
+.page-coffee {
+  word-break: auto-phrase;
+}
+.coffee-hero {
+  padding: 56px 10% 72px;
+}
+.coffee-hero-grid,
+.coffee-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 40px 8%;
+  align-items: center;
+}
+.coffee-hero-grid > *,
+.coffee-feature > *,
+.coffee-product-list > *,
+.brew-steps > * {
+  min-width: 0;
+}
+.coffee-hero h1 {
+  margin-top: 22px;
+  max-width: 100%;
+  width: auto;
+  padding: 0;
+  background: transparent;
+  font-size: 30px;
+  line-height: 1.75;
+  letter-spacing: 0.08em;
+}
+.coffee-hero figure,
+.coffee-feature figure {
+  height: auto;
+}
+.coffee-hero figure img,
+.coffee-feature figure img {
+  height: 420px;
+  filter: saturate(0.68);
+}
+.coffee-hero figure img {
+  object-position: center 68%;
+}
+.page-coffee figcaption {
+  margin-top: 15px;
+  font-size: 8px;
+  letter-spacing: 0.17em;
+  color: #7c7269;
+}
+.page-coffee .section-label {
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.coffee-feature {
+  align-items: start;
+  margin-top: 36px;
+}
+.coffee-copy {
+  max-width: 40em;
+}
+.coffee-lead,
+.coffee-copy p,
+.coffee-products-lead,
+.coffee-product-list article > p:not(.coffee-pending),
+.brew-steps p,
+.coffee-store > p {
+  font-size: 12px;
+  line-height: 2.5;
+  letter-spacing: 0.06em;
+}
+.coffee-lead {
+  max-width: 34em;
+  margin-top: 28px;
+}
+.coffee-copy p + p {
+  margin-top: 24px;
+}
+.coffee-beans,
+.coffee-products {
+  background: #f7f5f2;
+}
+.page-coffee h2 {
+  letter-spacing: 0.08em;
+}
+.page-coffee h3 {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+.coffee-products-lead {
+  max-width: 40em;
+  margin-top: 28px;
+}
+.coffee-product-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 40px;
+  margin-top: 48px;
+}
+.coffee-product-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #ebe4dd;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.coffee-product-card-image {
+  margin: 0;
+  height: 240px;
+}
+.coffee-product-card-image img {
+  height: 100%;
+  filter: saturate(0.65);
+}
+.coffee-product-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 26px 28px;
+}
+.brew-steps li {
+  padding-top: 18px;
+  border-top: 1px solid #e5ded7;
+}
+.coffee-pending {
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  color: #79563e;
+}
+.coffee-product-card h3 {
+  margin-top: 0;
+}
+.coffee-product-card .coffee-pending + h3 {
+  margin-top: 10px;
+}
+.coffee-product-card-body > p:not(.coffee-pending) {
+  margin-top: 14px;
+}
+.coffee-product-card .coffee-formats {
+  margin-top: auto;
+  padding-top: 22px;
+}
+.coffee-formats {
+  margin-top: 22px;
+}
+.coffee-product-card .coffee-specs {
+  margin-top: 16px;
+}
+.coffee-formats-label {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #79563e;
+  font-weight: 500;
+}
+.coffee-formats ul {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.coffee-format-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 0 8px;
+  border: 0;
+  border-bottom: 1px solid #d8cbbf;
+  background: transparent;
+  color: inherit;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  cursor: pointer;
+  text-decoration: none;
+}
+.coffee-format-link:hover {
+  border-bottom-color: #79563e;
+  color: #79563e;
+}
+.coffee-specs {
+  margin: 18px 0 0;
+}
+.coffee-specs div + div {
+  margin-top: 14px;
+}
+.coffee-specs dt {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #79563e;
+  font-weight: 500;
+}
+.coffee-specs dd {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+}
+.brew-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px 48px;
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.step-index {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: #79563e;
+  font-weight: 500;
+}
+.brew-steps p {
+  margin-top: 14px;
+}
+.coffee-store > p {
+  max-width: 36em;
+  margin-top: 28px;
+}
+.coffee-store-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 35px;
+  margin-top: 36px;
+  padding: 0 0 12px;
+  border: 0;
+  border-bottom: 1px solid #bfae9e;
+  background: transparent;
+  color: inherit;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  cursor: pointer;
+}
+@media (max-width: 999px) {
+  .brew-steps {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .coffee-hero {
+    padding: 36px 7% 48px;
+  }
+  .coffee-hero h1 {
+    font-size: 22px;
+    letter-spacing: 0.05em;
+  }
+  .coffee-hero-grid,
+  .coffee-feature {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .coffee-feature {
+    margin-top: 28px;
+  }
+  .coffee-hero figure img,
+  .coffee-feature figure img {
+    height: 260px;
+  }
+  .coffee-lead,
+  .coffee-copy p,
+  .coffee-products-lead,
+  .coffee-product-card-body > p:not(.coffee-pending),
+  .brew-steps p,
+  .coffee-store > p,
+  .coffee-specs dd {
+    font-size: 12px;
+    line-height: 2.2;
+  }
+  .coffee-product-list,
+  .brew-steps {
+    gap: 28px;
+    margin-top: 32px;
+  }
+  .coffee-product-list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .coffee-product-card {
+    border-radius: 14px;
+  }
+  .coffee-product-card-image {
+    height: 200px;
+  }
+  .coffee-product-card-body {
+    padding: 20px 20px 24px;
+  }
+  .page-coffee h2 {
+    font-size: 22px;
+    letter-spacing: 0.04em;
+  }
+  .page-coffee h3 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 380px) {
+  .coffee-hero h1 {
+    font-size: 22px;
+    letter-spacing: 0.03em;
+  }
+  .page-coffee h2 {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+  }
 }
