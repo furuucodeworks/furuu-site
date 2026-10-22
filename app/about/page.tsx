@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { SiteFrame } from '@/components/site-frame';
 
@@ -156,12 +157,13 @@ export default function AboutPage() {
             豆とドリップバッグは、コーヒーのページでご覧ください。考えたことや、試していることは、ブログの欄に残していきます。
           </p>
           <div className="about-next-links">
-            <a className="text-link" href="/coffee">
+            <Link className="text-link" href="/coffee" prefetch={false}>
               コーヒーを見る <ArrowRight size={18} />
-            </a>
-            <a className="text-link" href="/#blog">
+            </Link>
+            {/* 公開記事の一覧。TOPの新着欄ではなく /blog を開く。 */}
+            <Link className="text-link" href="/blog" prefetch={false}>
               ブログを見る <ArrowRight size={18} />
-            </a>
+            </Link>
           </div>
         </section>
       </div>

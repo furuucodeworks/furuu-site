@@ -52,5 +52,25 @@
     "typescript/no-require-imports": "error",
     "typescript/no-unnecessary-type-constraint": "error",
     "typescript/no-unsafe-function-type": "error"
-  }
+  },
+  // 対象ファイルの写真は、CSSの枠と object-fit でサイズと比率を決めている。
+  // ほとんどは切り抜き指定済みの外部URLで、プロフィール1枚だけが /about-profile.jpg。
+  // vinext の next/image は、幅と高さの無い外部URLを /_next/image に載せ替えて失敗する。
+  // 幅と高さを渡すと別のCDN変換になり、loading の初期値も lazy に変わる。
+  // 画像の最適化プラグインも未設定なので、ここでは img のままにする。
+  "overrides": [
+    {
+      "files": [
+        "app/about/page.tsx",
+        "app/coffee/page.tsx",
+        "components/article-screen.tsx",
+        "components/blog-list.tsx",
+        "components/coffee-product-list.tsx",
+        "components/home-main.tsx"
+      ],
+      "rules": {
+        "nextjs/no-img-element": "off"
+      }
+    }
+  ]
 }

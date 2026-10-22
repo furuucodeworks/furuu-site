@@ -1,3 +1,5 @@
+// 回転するSVGそのものが読み込み中を表す。output に替えるとSVGの部品型と回転が壊れる。
+/* oxlint-disable jsx_a11y/prefer-tag-over-role */
 import { cn } from '@/lib/utils';
 import { Loader2Icon } from 'lucide-react';
 

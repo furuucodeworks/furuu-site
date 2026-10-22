@@ -1,5 +1,8 @@
 'use client';
 
+// カルーセルの領域とスライドは、読み上げ用の region / group と aria-roledescription で表す。
+// section や fieldset に替えると、名前が無いときに領域が消え、スライドの意味も変わる。
+/* oxlint-disable jsx_a11y/prefer-tag-over-role */
 import * as React from 'react';
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -60,11 +63,18 @@ function Carousel({
   );
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
   const [canScrollNext, setCanScrollNext] = React.useState(false);
+  const [trackedApi, setTrackedApi] = React.useState<CarouselApi>(undefined);
 
-  const onSelect = React.useCallback((api: CarouselApi) => {
-    if (!api) return;
-    setCanScrollPrev(api.canScrollPrev());
-    setCanScrollNext(api.canScrollNext());
+  if (api !== trackedApi) {
+    setTrackedApi(api);
+    setCanScrollPrev(api?.canScrollPrev() ?? false);
+    setCanScrollNext(api?.canScrollNext() ?? false);
+  }
+
+  const onSelect = React.useCallback((emblaApi: CarouselApi) => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
   }, []);
 
   const scrollPrev = React.useCallback(() => {
@@ -95,12 +105,11 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return;
-    onSelect(api);
     api.on('reInit', onSelect);
     api.on('select', onSelect);
 
     return () => {
-      api?.off('select', onSelect);
+      api.off('select', onSelect);
     };
   }, [api, onSelect]);
 

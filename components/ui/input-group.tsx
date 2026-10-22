@@ -1,5 +1,9 @@
 'use client';
 
+// 入力と付属部品のまとまり。fieldset にするとフォームの枠と意味が変わる。
+// 付属部分のクリックは、同じグループ内の入力へフォーカスを移すだけ。
+// 入力自体がタブ順にある。付属部分をキー操作の対象にすると、その手前に余分な停止が増える。
+/* oxlint-disable jsx_a11y/prefer-tag-over-role, jsx_a11y/click-events-have-key-events, jsx_a11y/no-noninteractive-element-interactions */
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 

@@ -1,5 +1,7 @@
 'use client';
 
+// 関連付けは利用側が行う。htmlFor を渡すか、この label で入力を包む。
+/* oxlint-disable jsx_a11y/label-has-associated-control */
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';

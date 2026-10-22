@@ -1,5 +1,7 @@
 'use client';
 
+// 区切りはアイコンを内包する。hr は中身を持てないので、separator 役の div のままにする。
+/* oxlint-disable jsx_a11y/prefer-tag-over-role */
 import * as React from 'react';
 import { OTPInput, OTPInputContext } from 'input-otp';
 

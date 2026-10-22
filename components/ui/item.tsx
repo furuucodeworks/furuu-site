@@ -1,3 +1,5 @@
+// 項目は div のままリンクにもできる。ul にすると子が li でない並びになり、部品の描画先も変わる。
+/* oxlint-disable jsx_a11y/prefer-tag-over-role */
 import * as React from 'react';
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';

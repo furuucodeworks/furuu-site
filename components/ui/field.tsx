@@ -1,5 +1,7 @@
 'use client';
 
+// 一つの入力とラベルのまとまり。fieldset は複数コントロール用で、幅の最小値もレイアウトを壊す。
+/* oxlint-disable jsx_a11y/prefer-tag-over-role */
 import { useMemo } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 

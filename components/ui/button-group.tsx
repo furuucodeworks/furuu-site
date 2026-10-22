@@ -1,3 +1,5 @@
+// ボタンのまとまり。fieldset にするとフォームの意味とブラウザ標準の枠が付く。
+/* oxlint-disable jsx_a11y/prefer-tag-over-role */
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 import { cva, type VariantProps } from 'class-variance-authority';

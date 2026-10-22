@@ -8,9 +8,11 @@ import {
   useId,
   useRef,
   useState,
+  type ComponentProps,
   type ReactNode,
 } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { codeWorksUrl } from '@/lib/code-works';
 import { furuuTopLabel, furuuTopUrl } from '@/lib/furuu-top';
@@ -75,11 +77,40 @@ function DestinationEntry({
   );
 }
 
-type CurrentPage = 'about' | 'coffee';
+type CurrentPage = 'about' | 'coffee' | 'blog';
+
+function PageLink({
+  href,
+  className,
+  onClick,
+  children,
+  ...props
+}: {
+  href: string;
+  className?: string;
+  onClick?: () => void;
+  children: ReactNode;
+} & Omit<ComponentProps<'a'>, 'href' | 'className' | 'onClick' | 'children'>) {
+  if (href.startsWith('#')) {
+    return (
+      <a href={href} className={className} onClick={onClick} {...props}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className} onClick={onClick} prefetch={false} {...props}>
+      {children}
+    </Link>
+  );
+}
 
 function sectionHref(id: SectionId, current?: CurrentPage) {
   if (id === 'about') return '/about';
   if (id === 'coffee') return '/coffee';
+  // 記事一覧は /blog。TOPの新着は #blog に残す。下書きはこのリンク先へ出さない。
+  if (id === 'blog') return '/blog';
   if (current) return `/#${id}`;
   return `#${id}`;
 }
@@ -155,18 +186,18 @@ export function SiteFrame({
   return (
     <SiteNoticeContext.Provider value={{ openPreview }}>
       <header className="header">
-        <a href="/" className="brand-name" aria-label="FURUU COFFEE トップへ">
+        <PageLink href="/" className="brand-name" aria-label="FURUU COFFEE トップへ">
           FURUU COFFEE
-        </a>
+        </PageLink>
         <nav aria-label="メインナビゲーション">
           {nav.map(([label, id]) => (
-            <a
+            <PageLink
               key={id}
               href={sectionHref(id, current)}
               aria-current={current === id ? 'page' : undefined}
             >
               {label}
-            </a>
+            </PageLink>
           ))}
           <DestinationEntry
             href={codeWorksHref}
@@ -201,14 +232,14 @@ export function SiteFrame({
           aria-label="モバイルナビゲーション"
         >
           {nav.map(([label, id]) => (
-            <a
+            <PageLink
               key={id}
               href={sectionHref(id, current)}
               aria-current={current === id ? 'page' : undefined}
               onClick={() => setMenu(false)}
             >
               {label}
-            </a>
+            </PageLink>
           ))}
           <DestinationEntry
             href={codeWorksHref}
@@ -242,11 +273,9 @@ export function SiteFrame({
               <span className="works-name">FURUU CODE WORKS</span>
             </DestinationEntry>
           </div>
-          <div
-            className="footer-brand"
-            role="img"
-            aria-label="FURUU COFFEE ロゴ"
-          >
+          {/* ロゴはCSSマスクの図形。imgに替えると色とマスクが変わるので、roleで画像名を付ける。 */}
+          {/* oxlint-disable-next-line jsx_a11y/prefer-tag-over-role */}
+          <div className="footer-brand" role="img" aria-label="FURUU COFFEE ロゴ">
             <span className="brand-logo-mark" aria-hidden="true" />
           </div>
         </footer>
